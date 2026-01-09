@@ -1,4 +1,9 @@
-const { cosmos, ensureBlobContainer, uploadBase64Image } = require("../shared");
+const {
+  cosmos,
+  ensureBlobContainer,
+  uploadBase64Image,
+  notifyLogicApp
+} = require("../shared");
 
 module.exports = async function (context, req) {
   try {
@@ -43,6 +48,7 @@ module.exports = async function (context, req) {
 
     const { container } = cosmos();
     await container.items.create(expense);
+    await notifyLogicApp(expense);
 
     context.res = { status: 201, jsonBody: expense };
   } catch (err) {
