@@ -1,0 +1,8 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "LOGIC_APP_URL": "PASTE_YOUR_LOGIC_APP_HTTP_TRIGGER_URL_HERE"
+  }
+}
