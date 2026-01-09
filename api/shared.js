@@ -48,7 +48,20 @@ async function uploadBase64Image(base64, contentType) {
 
 module.exports = {
   cosmos,
-  blob,
   ensureBlobContainer,
-  uploadBase64Image
+  uploadBase64Image,
+  notifyLogicApp
 };
+
+async function notifyLogicApp(expense) {
+  const url = process.env.LOGIC_APP_URL;
+  if (!url) return;
+
+  await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(expense)
+  });
+}
+
+module.exports.notifyLogicApp = notifyLogicApp;
